@@ -1,0 +1,15 @@
+#! /usr/bin/env elixir
+
+cli_args = System.argv()
+supported_cli_args = [url: :string, total_requests: :integer, concurrency: :integer]
+
+%{url: url, total_requests: total_requests, concurrency: concurrency} =
+  cli_args
+  |> OptionParser.parse(strict: supported_cli_args)
+  |> case do
+    {parsed_cli_args, [], []} when length(parsed_cli_args) == 3 ->
+      Map.new(parsed_cli_args)
+
+    _ ->
+      raise "Invalid arguments were provided"
+  end
