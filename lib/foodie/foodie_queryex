@@ -1,4 +1,4 @@
-defmodule Foodie.Data do
+defmodule Foodie.Query do
   # use Genserver
 
   @filename "data/Mobile_Food_Facility_Permit.csv"
