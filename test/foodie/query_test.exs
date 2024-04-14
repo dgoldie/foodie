@@ -5,6 +5,7 @@ defmodule Foodie.Cli.QueryTest do
   alias Foodie.Cli.Query
 
   test "match 'Tacos'" do
-    assert 59 == Query.match_food("Tacos") |> Enum.count()
+    {:ok, result} = Query.match_food("Tacos")
+    assert 59 == result |> Enum.count()
   end
 end

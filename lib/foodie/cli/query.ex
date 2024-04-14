@@ -11,16 +11,20 @@ defmodule Foodie.Cli.Query do
   end
 
   def match_food(data \\ load(), food_type) do
-    result =
-      data
-      |> Enum.filter(fn map ->
-        if map["FoodItems"] |> String.contains?(food_type) do
-          true
-        else
-          false
-        end
-      end)
+    try do
+      result =
+        data
+        |> Enum.filter(fn map ->
+          if map["FoodItems"] |> String.contains?(food_type) do
+            true
+          else
+            false
+          end
+        end)
 
-    {:ok, result}
+      {:ok, result}
+    rescue
+      _ -> :error
+    end
   end
 end
