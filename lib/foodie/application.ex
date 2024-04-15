@@ -10,16 +10,17 @@ defmodule Foodie.Application do
     children = [
       # Start the Telemetry supervisor
       FoodieWeb.Telemetry,
-      # Start the Ecto repository
+      # # Start the Ecto repository
       Foodie.Repo,
-      # Start the PubSub system
+      # # Start the PubSub system
       {Phoenix.PubSub, name: Foodie.PubSub},
-      # Start Finch
+      # # Start Finch
       {Finch, name: Foodie.Finch},
-      # Start the Endpoint (http/https)
-      FoodieWeb.Endpoint
+      # # Start the Endpoint (http/https)
+      FoodieWeb.Endpoint,
       # Start a worker by calling: Foodie.Worker.start_link(arg)
       # {Foodie.Worker, arg}
+      {Foodie.CliSup, [10000, 20000]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

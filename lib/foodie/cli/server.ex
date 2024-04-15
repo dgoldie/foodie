@@ -10,7 +10,7 @@ defmodule Foodie.Cli.Server do
 
   def start_link(opts \\ []) do
     new_data = Query.load()
-    GenServer.start_link(__MODULE__, new_data, opts)
+    GenServer.start_link(__MODULE__, new_data, id: opts)
   end
 
   # {:ok, pid} = GenServer.start_link(__MODULE__, [])
